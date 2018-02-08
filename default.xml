@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+
+  <remote  name="aosp"
+           fetch="https://android.googlesource.com"
+           review="android-review.googlesource.com"
+           revision="refs/tags/android-5.1.1_r34" />
+
+  <remote  name="TeamWin"
+           fetch="https://github.com/TeamWin" 
+           review="gerrit.twrp.me"/>
+           
+  <remote  name="omnirom"
+           fetch="https://github.com/omnirom" />
+           
+  <remote  name="github"
+           fetch=".."
+           review="review.cyanogenmod.org" />
+
+  <remote  name="private"
+           fetch="ssh://git@github.com" />
+
+  <default revision="refs/heads/cm-12.1"
+           remote="github"
+           sync-c="true"
+           sync-j="4" />
+
+
+  <project path="build" name="CyanogenMod/android_build" groups="pdk,tradefed" clone-depth="1" >
+    <copyfile src="core/root.mk" dest="Makefile" />
+  </project>
+  <project path="android" name="CyanogenMod/android" clone-depth="1" />
+  <project path="bionic" name="CyanogenMod/android_bionic" groups="pdk" clone-depth="1" />
+  <project path="bootable/recovery" name="android_bootable_recovery" remote="omnirom" revision="android-8.1" groups="pdk-cw-fs" clone-depth="1"/>
+  <project path="external/bison" name="platform/external/bison" groups="pdk" clone-depth="1" remote="aosp" />
+  <project path="external/bouncycastle" name="CyanogenMod/android_external_bouncycastle" clone-depth="1" />
+  <project path="external/busybox" name="CyanogenMod/android_external_busybox" clone-depth="1" />
+  <project path="external/bzip2" name="platform/external/bzip2" groups="pdk" clone-depth="1" remote="aosp" />
+  <project path="external/checkpolicy" name="platform/external/checkpolicy" groups="pdk" clone-depth="1" remote="aosp" />
+  <project path="external/compiler-rt" name="platform/external/compiler-rt" groups="pdk" clone-depth="1" remote="aosp" />
+  <project path="external/e2fsprogs" name="CyanogenMod/android_external_e2fsprogs" groups="pdk" clone-depth="1" />
+  <project path="external/elfutils" name="platform/external/elfutils" groups="pdk" clone-depth="1" remote="aosp" />
+  <project path="external/f2fs-tools" name="CyanogenMod/android_external_f2fs-tools" groups="pdk" clone-depth="1" />
+  <project path="external/freetype" name="platform/external/freetype" groups="pdk" clone-depth="1" remote="aosp" revision="refs/tags/android-m-preview-1" />
+  <project path="external/gcc-demangle" name="platform/external/gcc-demangle" groups="pdk" clone-depth="1" remote="aosp" />
+  <project path="external/jemalloc" name="platform/external/jemalloc" groups="pdk" clone-depth="1" remote="aosp" />
+  <project path="external/jpeg" name="CyanogenMod/android_external_jpeg" groups="pdk" clone-depth="1" />
+  <project path="external/libcxx" name="platform/external/libcxx" groups="pdk" clone-depth="1" remote="aosp" />
+  <project path="external/libcxxabi" name="platform/external/libcxxabi" groups="pdk" clone-depth="1" remote="aosp" />
+  <project path="external/libnl" name="platform/external/libnl" groups="pdk" clone-depth="1" remote="aosp" />
+  <project path="external/libpng" name="CyanogenMod/android_external_libpng" groups="pdk" clone-depth="1" />
+  <project path="external/libseccomp-helper" name="platform/external/libseccomp-helper" groups="pdk-cw-fs" clone-depth="1" remote="aosp" />
+  <project path="external/libselinux" name="CyanogenMod/android_external_libselinux" groups="pdk" clone-depth="1" />
+  <project path="external/libsepol" name="CyanogenMod/android_external_libsepol" groups="pdk" clone-depth="1" />
+  <project path="external/libtar" name="CyanogenMod/android_external_libtar" clone-depth="1" />
+  <project path="external/libunwind" name="platform/external/libunwind" groups="pdk" clone-depth="1" remote="aosp" />
+  <project path="external/llvm" name="platform/external/llvm" groups="pdk" clone-depth="1" remote="aosp" />
+  <project path="external/lz4" name="CyanogenMod/android_external_lz4" clone-depth="1" />
+  <project path="external/lzma" name="CyanogenMod/android_external_lzma" clone-depth="1" />
+  <project path="external/openssl" name="Cyanogenmod/android_external_openssl" clone-depth="1" />
+  <project path="external/pcre" name="CyanogenMod/android_external_pcre" groups="pdk-cw-fs" clone-depth="1" />
+  <project path="external/safe-iop" name="platform/external/safe-iop" groups="pdk" clone-depth="1" remote="aosp" />
+  <project path="external/sepolicy" name="CyanogenMod/android_external_sepolicy" groups="pdk" clone-depth="1" />
+  <project path="external/zlib" name="CyanogenMod/android_external_zlib" groups="pdk" clone-depth="1" />
+  <project path="frameworks/native" name="CyanogenMod/android_frameworks_native" groups="pdk" clone-depth="1" />
+  <project path="hardware/libhardware" name="CyanogenMod/android_hardware_libhardware" groups="pdk" clone-depth="1" />
+  <project path="libcore" name="CyanogenMod/android_libcore" />
+  <project path="libnativehelper" name="CyanogenMod/android_libnativehelper" groups="pdk-java" />
+  <project path="prebuilts/clang/linux-x86/3.1" name="platform/prebuilts/clang/linux-x86/3.1" groups="pdk,linux" clone-depth="1" remote="aosp" />
+  <project path="prebuilts/clang/linux-x86/3.2" name="platform/prebuilts/clang/linux-x86/3.2" groups="pdk,linux" clone-depth="1" remote="aosp" />
+  <project path="prebuilts/clang/linux-x86/arm/3.3" name="platform/prebuilts/clang/linux-x86/arm/3.3" groups="arm,linux,pdk-cw-fs" clone-depth="1" remote="aosp" />
+  <project path="prebuilts/clang/linux-x86/host/3.4" name="platform/prebuilts/clang/linux-x86/host/3.4" groups="pdk,linux" clone-depth="1" remote="aosp" />
+  <project path="prebuilts/clang/linux-x86/host/3.5" name="platform/prebuilts/clang/linux-x86/host/3.5" groups="pdk,linux" clone-depth="1" remote="aosp" />
+  <project path="prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.8" name="platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.8" groups="pdk,linux,arm" clone-depth="1" remote="aosp" />
+  <project path="prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9" name="CyanogenMod/android_prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9" groups="pdk,linux,arm" clone-depth="1" />
+  <project path="prebuilts/gcc/linux-x86/arm/arm-eabi-4.8" name="platform/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8" groups="pdk,linux,arm" clone-depth="1" remote="aosp" />
+  <project path="prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.8" name="platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.8" groups="pdk,linux,arm" clone-depth="1" remote="aosp" />
+  <project path="prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.8" name="platform/prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.8" groups="pdk,linux,x86" clone-depth="1" remote="aosp" />
+  <project path="prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9" name="platform/prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9" groups="pdk,linux,x86" clone-depth="1" remote="aosp" />
+  <project path="prebuilts/misc" name="platform/prebuilts/misc" groups="pdk,tradefed" clone-depth="1" remote="aosp" />
+  <project path="prebuilts/ndk" name="platform/prebuilts/ndk" groups="pdk" clone-depth="1" remote="aosp" />
+  <project path="prebuilts/sdk" name="platform/prebuilts/sdk" groups="pdk" clone-depth="1" remote="aosp" />
+  <project path="system/core" name="CyanogenMod/android_system_core" groups="pdk" clone-depth="1" />
+  <project path="system/extras" name="CyanogenMod/android_system_extras" groups="pdk" clone-depth="1" />
+  <project path="vendor/cm" name="CyanogenMod/android_vendor_cm" clone-depth="1" />
+  </manifest>
