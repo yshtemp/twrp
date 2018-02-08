@@ -14,14 +14,15 @@ script:
 - repo init -u git://github.com/yshtemp/twrp.git -b cm-twrp-5.1-norepo --depth=1
 - repo sync -c -f -j64 --force-sync --no-clone-bundle --no-tags
 - du -sh .
-- XZ_OPT=-e9 tar cJfv cm_twrp-5.1.1-$(date +"%Y%m%d")-norepo.tar.xz *
+- export today=$(date +"%Y%m%d")
+- XZ_OPT=-e9 tar cJfv cm_twrp-5.1.1-$today-norepo.tar.xz *
 - ls -h -l *.tar.xz ; du -h *.tar.xz
 
 deploy:
   skip_cleanup: true
   provider: releases
   api_key: "$GIT_OAUTH_TOKEN_TB"
-  file: "$HOME/twrp/cm_twrp-5.1.1-$(date +"%Y%m%d")-norepo.tar.xz"
+  file: "$HOME/twrp/cm_twrp-5.1.1-$today-norepo.tar.xz"
   on:
     tags: false
     repo: yshtemp/twrp
