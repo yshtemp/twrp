@@ -1,0 +1,27 @@
+language: java
+jdk:
+- openjdk7
+sudo: required
+before_script:
+- cd $HOME
+- sudo apt-get install -y git git-core
+- curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo && chmod a+x ~/bin/repo
+- echo "export PATH=~/bin:$PATH" >> ~/.bashrc ; source ~/.bashrc
+- mkdir twrp && cd twrp
+- git config --global user.name "yshalsager"
+- git config --global user.email ysh-alsager@hotmail.com
+script:
+- repo init -u git://github.com/yshtemp/twrp.git -b cm-twrp-5.1-norepo --depth=1
+- repo sync -c -f -j64 --force-sync --no-clone-bundle --no-tags
+- du -sh .
+- XZ_OPT=-e9 tar cJfv cm_twrp-5.1.1-$(date +"%Y%m%d")-norepo.tar.xz *
+- ls -h -l *.tar.xz ; du -h *.tar.xz
+deploy:
+  skip_cleanup: true
+  provider: releases
+  api_key: "$GIT_OAUTH_TOKEN_TB"
+  file: "$HOME/twrp/*.tar.xz"
+  on:
+    tags: false
+    repo: yshtemp/twrp
+    branch: cm-twrp-5.1-norepo
