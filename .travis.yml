@@ -13,6 +13,7 @@ before_script:
 script:
 - repo init -u git://github.com/yshtemp/twrp.git -b cm-twrp-5.1-norepo --depth=1
 - repo sync -c -f -j64 --force-sync --no-clone-bundle --no-tags
+- rm -rf .repo
 - du -sh .
 - export today=$(date +"%Y%m%d")
 - XZ_OPT=-e9 tar cJf - $HOME/twrp/ -P | pv -s $(du -sb $HOME/twrp/ | awk '{print $1}') | gzip > cm_twrp-5.1.1-$today.tar.xz
